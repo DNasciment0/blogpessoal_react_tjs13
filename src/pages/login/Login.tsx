@@ -7,14 +7,11 @@ import { ClipLoader } from "react-spinners";
 
 function Login() {
 
-    // Objeto responsável por redirecionar o usuário para uma outra rota
     const navigate = useNavigate();
 
-    // Estado usuario, que vai guardar os dados do usuário que será autenticado
     const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({} as UsuarioLogin);
 
-    // Consumo do Contexto AuthContext 
-    // usamos a desestruturação para selecionar apenas o que precisamos
+
     const { usuario, handleLogin, isLoading } = useContext(AuthContext);
 
     useEffect( () => {
@@ -23,7 +20,6 @@ function Login() {
         }
     }, [usuario])
 
-    // Função de atualização do estado usuario
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>){
         setUsuarioLogin({
           ...usuarioLogin,

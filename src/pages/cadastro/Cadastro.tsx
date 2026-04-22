@@ -6,16 +6,12 @@ import { ClipLoader } from "react-spinners";
 
 function Cadastro() {
 
-  // Objeto responsável por redirecionar o usuário para uma outra rota
   const navigate = useNavigate();
   
-  // Estado para controlar o Loader (animação de carregamento)
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  // Estado para confirmar a senha digitada pelo usuário
   const [confirmarSenha, setConfirmarSenha] = useState<string>("");
 
-  // Estado usuario para armazenar os dados do usuário que será cadastrado
   const [usuario, setUsuario] = useState<Usuario>({
     id: 0,
     nome: "",
@@ -24,15 +20,12 @@ function Cadastro() {
     foto: ""
   })
 
-  // useEffect que vai controlar o redirecionamento para a página de logina
-  // caso o cadastro seja bem sucedido
   useEffect( () => {
     if(usuario.id !== 0){
       retornar()
     }
   }, [usuario])
 
-  // Função de atualização do estado usuario
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>){
     setUsuario({
       ...usuario,
@@ -40,12 +33,10 @@ function Cadastro() {
     })
   }
 
-  // Função de atualização do estado confirmarSenha
   function handleConfirmarSenha(e: ChangeEvent<HTMLInputElement>){
     setConfirmarSenha(e.target.value)
   }
 
-  // Função para enviar os dados para o Backend (Submit)
   async function cadastrarNovoUsuario(e: FormEvent<HTMLFormElement>){
     
     e.preventDefault();
