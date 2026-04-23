@@ -5,6 +5,7 @@ import type Tema from "../../../models/Tema";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { buscar } from "../../../services/Service";
 import { SyncLoader } from "react-spinners";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function ListaTemas() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ function ListaTemas() {
 
   useEffect(() => {
     if (token === "") {
-      alert("É preciso estar logado para realizar esta ação");
+      ToastAlerta("É preciso estar logado para realizar esta ação", "info");
       navigate("/");
     }
   }, [token]);
